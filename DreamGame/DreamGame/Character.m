@@ -11,6 +11,13 @@
 
 @implementation Character
 
-// Insert code here to add functionality to your managed object subclass
++ (Character *)createNewCharacterWithManagedObjectContext:(NSManagedObjectContext *)managedObjectContext
+{
+    Character *character = [NSEntityDescription insertNewObjectForEntityForName:@"Character" inManagedObjectContext:managedObjectContext];
+    
+    //    NSLog(@"we've created a new character!");
+    
+    return character;
+}
 
 @end

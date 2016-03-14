@@ -12,8 +12,6 @@
 
 @implementation Prerequisite
 
-// Insert code here to add functionality to your managed object subclass
-
 + (Prerequisite *)createPrerequisiteFromCSVRow:(NSArray *)csvRow managedObjectContext:(NSManagedObjectContext *)managedObjectContext
 {
     Prerequisite *prerequsite = [NSEntityDescription insertNewObjectForEntityForName:@"Prerequisite" inManagedObjectContext:managedObjectContext];

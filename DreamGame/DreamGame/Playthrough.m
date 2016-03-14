@@ -12,6 +12,13 @@
 
 @implementation Playthrough
 
-// Insert code here to add functionality to your managed object subclass
++ (Playthrough *)createNewPlaythroughWithManagedObjectContext:(NSManagedObjectContext *)managedObjectContext
+{
+    Playthrough *playthrough = [NSEntityDescription insertNewObjectForEntityForName:@"Playthrough" inManagedObjectContext:managedObjectContext];
+    
+    //    NSLog(@"we're creating a new playthrough!");
+    
+    return playthrough;
+}
 
 @end
