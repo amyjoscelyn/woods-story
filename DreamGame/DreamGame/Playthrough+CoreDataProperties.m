@@ -1,5 +1,5 @@
 //
-//  Choice+CoreDataProperties.m
+//  Playthrough+CoreDataProperties.m
 //  DreamGame
 //
 //  Created by Amy Joscelyn on 3/13/16.
@@ -9,16 +9,11 @@
 //  to delete and recreate this implementation file for your updated model.
 //
 
-#import "Choice+CoreDataProperties.h"
+#import "Playthrough+CoreDataProperties.h"
 
-@implementation Choice (CoreDataProperties)
+@implementation Playthrough (CoreDataProperties)
 
-@dynamic comment;
-@dynamic content;
-@dynamic storyID;
-@dynamic effects;
-@dynamic prerequisites;
-@dynamic questionIns;
-@dynamic questionOut;
+@dynamic currentQuestion;
+@dynamic playerCharacter;
 
 @end

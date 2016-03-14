@@ -1,5 +1,5 @@
 //
-//  Choice+CoreDataProperties.m
+//  Character+CoreDataProperties.h
 //  DreamGame
 //
 //  Created by Amy Joscelyn on 3/13/16.
@@ -9,16 +9,14 @@
 //  to delete and recreate this implementation file for your updated model.
 //
 
-#import "Choice+CoreDataProperties.h"
+#import "Character.h"
 
-@implementation Choice (CoreDataProperties)
+NS_ASSUME_NONNULL_BEGIN
 
-@dynamic comment;
-@dynamic content;
-@dynamic storyID;
-@dynamic effects;
-@dynamic prerequisites;
-@dynamic questionIns;
-@dynamic questionOut;
+@interface Character (CoreDataProperties)
+
+@property (nullable, nonatomic, retain) Playthrough *playthrough;
 
 @end
+
+NS_ASSUME_NONNULL_END

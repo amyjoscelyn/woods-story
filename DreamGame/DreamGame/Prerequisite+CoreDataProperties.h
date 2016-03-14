@@ -2,7 +2,7 @@
 //  Prerequisite+CoreDataProperties.h
 //  DreamGame
 //
-//  Created by Amy Joscelyn on 2/7/16.
+//  Created by Amy Joscelyn on 3/13/16.
 //  Copyright © 2016 Amy Joscelyn. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -15,17 +15,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Prerequisite (CoreDataProperties)
 
-@property (nullable, nonatomic, retain) NSString *boolString;
 @property (nullable, nonatomic, retain) NSString *checkObject;
 @property (nullable, nonatomic, retain) NSString *checkProperty;
 @property (nullable, nonatomic, retain) NSString *comment;
 @property (nullable, nonatomic, retain) NSString *comparator;
-@property (nonatomic) float floatValue;
-@property (nonatomic) int64_t integerValue;
 @property (nullable, nonatomic, retain) NSString *storyID;
 @property (nullable, nonatomic, retain) NSString *stringValue;
 @property (nullable, nonatomic, retain) NSSet<Choice *> *choices;
 @property (nullable, nonatomic, retain) NSSet<Effect *> *effects;
+@property (nullable, nonatomic, retain) NSSet<Question *> *questions;
 
 @end
 
@@ -40,6 +38,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)removeEffectsObject:(Effect *)value;
 - (void)addEffects:(NSSet<Effect *> *)values;
 - (void)removeEffects:(NSSet<Effect *> *)values;
+
+- (void)addQuestionsObject:(Question *)value;
+- (void)removeQuestionsObject:(Question *)value;
+- (void)addQuestions:(NSSet<Question *> *)values;
+- (void)removeQuestions:(NSSet<Question *> *)values;
 
 @end
 

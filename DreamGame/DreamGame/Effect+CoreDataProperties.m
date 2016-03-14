@@ -2,7 +2,7 @@
 //  Effect+CoreDataProperties.m
 //  DreamGame
 //
-//  Created by Amy Joscelyn on 2/7/16.
+//  Created by Amy Joscelyn on 3/13/16.
 //  Copyright © 2016 Amy Joscelyn. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -15,15 +15,12 @@
 
 @dynamic actionObject;
 @dynamic actionProperty;
-@dynamic boolValue;
 @dynamic comment;
-@dynamic content;
-@dynamic floatValue;
-@dynamic integerValue;
 @dynamic operator;
 @dynamic storyID;
 @dynamic stringValue;
 @dynamic choices;
 @dynamic prerequisites;
+@dynamic questions;
 
 @end

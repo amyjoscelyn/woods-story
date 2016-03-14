@@ -1,5 +1,5 @@
 //
-//  Question+CoreDataProperties.m
+//  Character+CoreDataProperties.m
 //  DreamGame
 //
 //  Created by Amy Joscelyn on 3/13/16.
@@ -9,19 +9,10 @@
 //  to delete and recreate this implementation file for your updated model.
 //
 
-#import "Question+CoreDataProperties.h"
+#import "Character+CoreDataProperties.h"
 
-@implementation Question (CoreDataProperties)
+@implementation Character (CoreDataProperties)
 
-@dynamic comment;
-@dynamic content;
-@dynamic storyID;
-@dynamic choiceIns;
-@dynamic choiceOuts;
-@dynamic effects;
 @dynamic playthrough;
-@dynamic prerequisites;
-@dynamic questionAfter;
-@dynamic questionBefores;
 
 @end

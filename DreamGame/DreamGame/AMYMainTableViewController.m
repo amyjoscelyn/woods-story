@@ -44,6 +44,8 @@
     _sortedChoices = [currentQuestion.choiceOuts sortedArrayUsingDescriptors:@[self.dataStore.sortByStoryIDAsc]];
     
     _dataStore.currentQuestion = currentQuestion;
+    
+    [_dataStore saveContext]; //for some reason, data is not persisting between sessions
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

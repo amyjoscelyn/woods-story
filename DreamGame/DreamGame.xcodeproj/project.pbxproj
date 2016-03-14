@@ -12,6 +12,10 @@
 		3D23DB2A1C601DDE00C5FFBA /* Prerequisite.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D23DB1E1C601DDE00C5FFBA /* Prerequisite.m */; };
 		3D23DB2C1C601DDE00C5FFBA /* Effect.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D23DB221C601DDE00C5FFBA /* Effect.m */; };
 		3D23DB2E1C601DDE00C5FFBA /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D23DB261C601DDE00C5FFBA /* Question.m */; };
+		3D2EE8901C96491D007B8E88 /* Playthrough+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2EE8891C96491D007B8E88 /* Playthrough+CoreDataProperties.m */; };
+		3D2EE8911C96491D007B8E88 /* Playthrough.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2EE88B1C96491D007B8E88 /* Playthrough.m */; };
+		3D2EE8921C96491D007B8E88 /* Character+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2EE88D1C96491D007B8E88 /* Character+CoreDataProperties.m */; };
+		3D2EE8931C96491D007B8E88 /* Character.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2EE88F1C96491D007B8E88 /* Character.m */; };
 		3D4044D41BC5B75E00A49C70 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D4044D31BC5B75E00A49C70 /* main.m */; };
 		3D4044D71BC5B75E00A49C70 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D4044D61BC5B75E00A49C70 /* AppDelegate.m */; };
 		3D4044DD1BC5B75E00A49C70 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D4044DB1BC5B75E00A49C70 /* Main.storyboard */; };
@@ -54,6 +58,14 @@
 		3D23DB221C601DDE00C5FFBA /* Effect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Effect.m; sourceTree = "<group>"; };
 		3D23DB251C601DDE00C5FFBA /* Question.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Question.h; sourceTree = "<group>"; };
 		3D23DB261C601DDE00C5FFBA /* Question.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Question.m; sourceTree = "<group>"; };
+		3D2EE8881C96491D007B8E88 /* Playthrough+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Playthrough+CoreDataProperties.h"; sourceTree = "<group>"; };
+		3D2EE8891C96491D007B8E88 /* Playthrough+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Playthrough+CoreDataProperties.m"; sourceTree = "<group>"; };
+		3D2EE88A1C96491D007B8E88 /* Playthrough.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Playthrough.h; sourceTree = "<group>"; };
+		3D2EE88B1C96491D007B8E88 /* Playthrough.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Playthrough.m; sourceTree = "<group>"; };
+		3D2EE88C1C96491D007B8E88 /* Character+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Character+CoreDataProperties.h"; sourceTree = "<group>"; };
+		3D2EE88D1C96491D007B8E88 /* Character+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Character+CoreDataProperties.m"; sourceTree = "<group>"; };
+		3D2EE88E1C96491D007B8E88 /* Character.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Character.h; sourceTree = "<group>"; };
+		3D2EE88F1C96491D007B8E88 /* Character.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Character.m; sourceTree = "<group>"; };
 		3D4044CE1BC5B75E00A49C70 /* DreamGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DreamGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D4044D21BC5B75E00A49C70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3D4044D31BC5B75E00A49C70 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -195,6 +207,14 @@
 		3DA309C61C63F5AF00AC8594 /* Managed Data */ = {
 			isa = PBXGroup;
 			children = (
+				3D2EE8881C96491D007B8E88 /* Playthrough+CoreDataProperties.h */,
+				3D2EE8891C96491D007B8E88 /* Playthrough+CoreDataProperties.m */,
+				3D2EE88A1C96491D007B8E88 /* Playthrough.h */,
+				3D2EE88B1C96491D007B8E88 /* Playthrough.m */,
+				3D2EE88C1C96491D007B8E88 /* Character+CoreDataProperties.h */,
+				3D2EE88D1C96491D007B8E88 /* Character+CoreDataProperties.m */,
+				3D2EE88E1C96491D007B8E88 /* Character.h */,
+				3D2EE88F1C96491D007B8E88 /* Character.m */,
 				3DA309C81C6413DD00AC8594 /* Choice+CoreDataProperties.h */,
 				3DA309C91C6413DD00AC8594 /* Choice+CoreDataProperties.m */,
 				3D23DB191C601DDE00C5FFBA /* Choice.h */,
@@ -391,6 +411,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D2EE8921C96491D007B8E88 /* Character+CoreDataProperties.m in Sources */,
 				3D6D5EEE1C4ED367004FFA5F /* AMYStorySnippets.m in Sources */,
 				3D23DACC1C5FD8D700C5FFBA /* DreamGame.xcdatamodeld in Sources */,
 				3D23DB2C1C601DDE00C5FFBA /* Effect.m in Sources */,
@@ -401,12 +422,15 @@
 				3D23DB2A1C601DDE00C5FFBA /* Prerequisite.m in Sources */,
 				3D6D5EF41C4EE76F004FFA5F /* AMYStory.m in Sources */,
 				3DA309CA1C6413DD00AC8594 /* Choice+CoreDataProperties.m in Sources */,
+				3D2EE8931C96491D007B8E88 /* Character.m in Sources */,
 				3DA309D31C64141E00AC8594 /* Question+CoreDataProperties.m in Sources */,
 				3D23DB2E1C601DDE00C5FFBA /* Question.m in Sources */,
 				3D23DB281C601DDE00C5FFBA /* Choice.m in Sources */,
 				3DA309D01C64140300AC8594 /* Effect+CoreDataProperties.m in Sources */,
+				3D2EE8901C96491D007B8E88 /* Playthrough+CoreDataProperties.m in Sources */,
 				3D4044D41BC5B75E00A49C70 /* main.m in Sources */,
 				3D82B6571C66BCA0003C2095 /* Prerequisite+CoreDataProperties.m in Sources */,
+				3D2EE8911C96491D007B8E88 /* Playthrough.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
