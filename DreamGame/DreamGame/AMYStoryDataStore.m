@@ -8,10 +8,6 @@
 
 #import "AMYStoryDataStore.h"
 #import <CHCSVParser/CHCSVParser.h>
-#import "Prerequisite+CoreDataProperties.h"
-#import "Effect+CoreDataProperties.h"
-#import "Choice+CoreDataProperties.h"
-//#import "Question+CoreDataProperties.h"
 
 @interface AMYStoryDataStore()
 
@@ -19,6 +15,9 @@
 @property (strong, nonatomic, readwrite) NSArray *choices;
 @property (strong, nonatomic, readwrite) NSArray *effects;
 @property (strong, nonatomic, readwrite) NSArray *prerequisites;
+
+@property (strong, nonatomic, readwrite) Playthrough *playthrough;
+@property (strong, nonatomic, readwrite) Character *playerCharacter;
 
 @property (strong, nonatomic, readwrite) NSSortDescriptor *sortByStoryIDAsc;
 
@@ -51,26 +50,26 @@
 
 - (void)fetchData
 {
-//    NSFetchRequest *prerequisiteRequest = [NSFetchRequest fetchRequestWithEntityName:@"Prerequisite"];
-//    prerequisiteRequest.sortDescriptors = @[self.sortByStoryIDAsc];
-//    
-//    self.prerequisites = [self.managedObjectContext executeFetchRequest:prerequisiteRequest error:nil];
-//    
-//    if (self.prerequisites.count == 0)
-//    {
-//        [self generatePrerequisites];
-//    }
+    NSFetchRequest *prerequisiteRequest = [NSFetchRequest fetchRequestWithEntityName:@"Prerequisite"];
+    prerequisiteRequest.sortDescriptors = @[self.sortByStoryIDAsc];
     
-//    NSFetchRequest *effectRequest = [NSFetchRequest fetchRequestWithEntityName:@"Effect"];
-//    effectRequest.sortDescriptors = @[self.sortByStoryIDAsc];
-//    
-//    self.effects = [self.managedObjectContext executeFetchRequest:effectRequest error:nil];
-//    
-//    if (self.effects.count == 0)
-//    {
-//        [self generateEffects];
-//    }
-
+    self.prerequisites = [self.managedObjectContext executeFetchRequest:prerequisiteRequest error:nil];
+    
+    if (self.prerequisites.count == 0)
+    {
+        [self generatePrerequisites];
+    }
+    
+    NSFetchRequest *effectRequest = [NSFetchRequest fetchRequestWithEntityName:@"Effect"];
+    effectRequest.sortDescriptors = @[self.sortByStoryIDAsc];
+    
+    self.effects = [self.managedObjectContext executeFetchRequest:effectRequest error:nil];
+    
+    if (self.effects.count == 0)
+    {
+        [self generateEffects];
+    }
+    
     NSFetchRequest *choiceRequest = [NSFetchRequest fetchRequestWithEntityName:@"Choice"];
     choiceRequest.sortDescriptors = @[self.sortByStoryIDAsc];
     
@@ -79,6 +78,7 @@
     if (self.choices.count == 0)
     {
         [self generateChoices];
+        return;
     }
     
     NSFetchRequest *questionRequest = [NSFetchRequest fetchRequestWithEntityName:@"Question"];
@@ -89,9 +89,44 @@
     if (self.questions.count == 0)
     {
         [self generateQuestions];
+        return;
     }
     
-    self.currentQuestion = self.questions[0];
+    NSFetchRequest *playthroughRequest = [NSFetchRequest fetchRequestWithEntityName:@"Playthrough"];
+    
+    NSArray *playthroughRequestResult = [self.managedObjectContext executeFetchRequest:playthroughRequest error:nil];
+    
+    if (self.playthrough)
+    {
+        return;
+    }
+    else if (playthroughRequestResult.count > 0)
+    {
+        self.playthrough = [self.managedObjectContext executeFetchRequest:playthroughRequest error:nil][0];
+    }
+    else
+    {
+        [self generatePlaythrough];
+        return;
+    }
+    
+    NSFetchRequest *characterRequest = [NSFetchRequest fetchRequestWithEntityName:@"Character"];
+    
+    NSArray *characterRequestResult = [self.managedObjectContext executeFetchRequest:characterRequest error:nil];
+    
+    if (self.playerCharacter)
+    {
+        return;
+    }
+    else if (characterRequestResult.count > 0)
+    {
+        self.playerCharacter = [self.managedObjectContext executeFetchRequest:characterRequest error:nil][0];
+    }
+    else
+    {
+        [self generatePlayerCharacter];
+        return;
+    }
 }
 
 # pragma Generator Methods
@@ -157,7 +192,7 @@
             {
                 if ([prerequisite.storyID isEqualToString:prerequisiteStoryID])
                 {
-//                    NSLog(@"Add prerequisite %@", prerequisite.storyID);
+                    //                    NSLog(@"Add prerequisite %@", prerequisite.storyID);
                     [newChoice addPrerequisitesObject:prerequisite];
                 }
             }
@@ -169,7 +204,8 @@
             {
                 if ([effect.storyID isEqualToString:effectStoryID])
                 {
-//                    NSLog(@"Add effect %@", effect.storyID);
+                    //                    NSLog(@"Add effect %@", effect.storyID);
+                    //                    NSLog(@"EFFECT MATCH: %@ vs %@", effectStoryID, effect.storyID);
                     [newChoice addEffectsObject:effect];
                 }
             }
@@ -198,7 +234,7 @@
             {
                 if ([choiceOut.storyID isEqualToString:choiceOutStoryID])
                 {
-//                    NSLog(@"Add choice %@", choiceOut.storyID);
+                    //                    NSLog(@"Add choice %@", choiceOut.storyID);
                     [newQuestion addChoiceOutsObject:choiceOut];
                 }
             }
@@ -229,14 +265,14 @@
         NSPredicate *thisChoicePredicate = [NSPredicate predicateWithFormat:@"storyID == %@", choiceRowStoryID];
         Choice *thisChoice = [self.choices filteredArrayUsingPredicate:thisChoicePredicate][0];
         
-//        NSLog(@"CHOICE MATCH: %@ vs %@", choiceRowStoryID, thisChoice.storyID);
+        //        NSLog(@"CHOICE MATCH: %@ vs %@", choiceRowStoryID, thisChoice.storyID);
         
         NSString *questionOutStoryID = choiceRow[5];
         for (Question *question in allQuestions)
         {
             if ([question.storyID isEqualToString:questionOutStoryID])
             {
-//                NSLog(@"QUESTION AFTER %@ is %@", thisChoice, question);
+                //                NSLog(@"QUESTION AFTER %@ is %@", thisChoice, question);
                 thisChoice.questionOut = question;
             }
         }
@@ -245,9 +281,34 @@
     [self fetchData];
 }
 
+- (void)generatePlaythrough
+{
+    //this generates a new playthrough for the first game
+    
+    Playthrough *playthrough = [Playthrough createNewPlaythroughWithManagedObjectContext:self.managedObjectContext];
+    
+    playthrough.currentQuestion = self.questions[0];
+    
+    [self saveContext];
+    [self fetchData];
+}
+
+- (void)generatePlayerCharacter
+{
+    //this generates a new character for the player
+    
+    Character *character = [Character createNewCharacterWithManagedObjectContext:self.managedObjectContext];
+    
+    self.playerCharacter = character;
+    
+    [self saveContext];
+    [self fetchData];
+}
+
 # pragma CSV Parser method
 
-- (NSArray *)parsedCSVContentsWithFileName:(NSString *)fileName {
+- (NSArray *)parsedCSVContentsWithFileName:(NSString *)fileName
+{
     NSString *csvPath = [[NSBundle mainBundle] pathForResource:fileName ofType:@"csv"];
     NSURL *csvURL = [NSURL fileURLWithPath:csvPath];
     NSMutableArray *csvRows = [[NSArray arrayWithContentsOfCSVURL:csvURL options:CHCSVParserOptionsSanitizesFields] mutableCopy];
@@ -255,13 +316,14 @@
     // removes header from the contents
     [csvRows removeObjectAtIndex:0];
     
-    for (NSArray *csvRow in csvRows) {
+    for (NSArray *csvRow in csvRows)
+    {
         NSString *storyID = csvRow[0];
-        if (storyID.length == 0) {
+        if (storyID.length == 0)
+        {
             [csvRows removeObject:csvRow];
         }
     }
-
     return csvRows;
 }
 
